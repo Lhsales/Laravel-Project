@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::controller(Controllers\HomeController::class)->group(function(){
+    Route::get('/', 'Index')->name('home');
 });
+
+Route::view('/experiences', 'experiences/index')->name('experiences.index');
+Route::view('/knowledges', 'knowledges/index')->name('knowledges.index');
