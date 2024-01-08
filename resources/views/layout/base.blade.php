@@ -11,10 +11,19 @@
     <link href="{{ URL::asset('css/style.css') }}" rel="stylesheet">
 
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
+
     @include('layout.include.header')
 
+    <section class="page-section">
+        <div class="container">
+            <h2 class="text-uppercase text-center mb-0">
+                @yield('title')
+            </h2>
+        </div>
+    </section>
 
+    @yield('content')
     
     @include('layout.include.footer')
 
