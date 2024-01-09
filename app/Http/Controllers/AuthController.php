@@ -33,4 +33,10 @@ class AuthController extends Controller
             return view('auth.index');
         }
     }
+
+    function Logout()
+    {
+        Auth::logout();
+        return redirect()->route('home');
+    }
 }
