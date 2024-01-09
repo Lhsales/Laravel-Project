@@ -18,8 +18,9 @@
                     </li>
                 </ul>
             </div>
+            <div class="form-inline my-2 my-lg-0">
+                <a href="{{ route('auth.index') }}" class="btn btn-outline-success">Login</a>
+            </div>
         </div>
     </nav>
-    
-
 </header>
