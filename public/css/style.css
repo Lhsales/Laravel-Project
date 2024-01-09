@@ -64,3 +64,28 @@
 body {
     background-color: #fbfbfb;
 }
+
+.divider:after,
+.divider:before {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eee;
+}
+.h-custom {
+    height: calc(100% - 73px);
+}
+
+.btn-user {
+    color: rgba(255, 255, 255, 0.747);
+}
+.btn-user:hover, .btn-user:focus, .btn-user:active, .btn-user.active, .open>.dropdown-toggle.btn-user {
+    color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.082);
+}
+
+@media (max-width: 450px) {
+    .h-custom {
+        height: 100%;
+    }
+}

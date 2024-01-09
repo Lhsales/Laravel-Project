@@ -18,5 +18,11 @@ Route::controller(Controllers\HomeController::class)->group(function(){
     Route::get('/', 'Index')->name('home');
 });
 
+Route::controller(Controllers\AuthController::class)->group(function(){
+    Route::get('/login', 'Index')->name('auth.index');
+    Route::post('/login', 'Login')->name('auth.login');
+    Route::get('/logout', 'Logout')->name('auth.logout');
+});
+
 Route::view('/experiences', 'experiences/index')->name('experiences.index');
 Route::view('/knowledges', 'knowledges/index')->name('knowledges.index');
