@@ -24,5 +24,9 @@ Route::controller(Controllers\AuthController::class)->group(function(){
     Route::get('/logout', 'Logout')->name('auth.logout');
 });
 
+Route::controller(Controllers\AdminController::class)->group(function(){
+    Route::get('/admin', 'Index')->name('admin.index');
+});
+
 Route::view('/experiences', 'experiences/index')->name('experiences.index');
 Route::view('/knowledges', 'knowledges/index')->name('knowledges.index');
