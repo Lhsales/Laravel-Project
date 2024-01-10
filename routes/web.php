@@ -16,6 +16,8 @@ use App\Http\Controllers;
 
 Route::controller(Controllers\HomeController::class)->group(function(){
     Route::get('/', 'Index')->name('home');
+    Route::get('/experiences', 'Experiences')->name('experiences.index');
+    Route::get('/knowledges', 'Knowledges')->name('knowledges.index');
 });
 
 Route::controller(Controllers\AuthController::class)->group(function(){
@@ -24,5 +26,15 @@ Route::controller(Controllers\AuthController::class)->group(function(){
     Route::get('/logout', 'Logout')->name('auth.logout');
 });
 
-Route::view('/experiences', 'experiences/index')->name('experiences.index');
-Route::view('/knowledges', 'knowledges/index')->name('knowledges.index');
+Route::controller(Controllers\AdminController::class)->middleware(['auth'])->group(function(){
+    Route::get('/admin', 'Index')->name('admin.index');
+});
+
+Route::view('/admin/experiences', 'experiences.index')->name('admin.experiences.index');
+
+Route::view('/admin/scholarity', 'scholarity.index')->name('admin.scholarity.index');
+Route::view('/admin/scholarity/types', 'scholarity.types.index')->name('admin.scholarity.types.index');
+Route::view('/admin/scholarity/types/2', 'scholarity.types.index')->name('admin.scholarity.types.index');
+
+Route::view('/admin/languages', 'languages.index')->name('admin.languages.index');
+Route::view('/admin/languages/types', 'languages.types.index')->name('admin.languages.types.index');

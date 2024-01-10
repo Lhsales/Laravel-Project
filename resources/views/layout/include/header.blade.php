@@ -28,11 +28,18 @@
                         <a href="{{ route('auth.index') }}" class="btn btn-outline-success fw-bold">Login</a>
                     </div>            
                 @else
+                    @if (Auth::user()->roles()->where(['name'=>'admin'])->count())
+                        <ul class="navbar-nav me-auto">
+                            <li class="nav-item">
+                                <a href="{{ route('admin.index') }}" class="nav-link">Admin</a>
+                            </li>
+                        </ul>
+                    @endif 
                     <div class="form-inline my-2 my-lg-0 me-2">
                         <a href="#" class="btn btn-user">{{ Auth::user()->name }}</a>
                     </div>
                     <div class="form-inline my-2 my-lg-0">
-                        <a href="{{ route('auth.logout') }}" class="btn btn-outline-success fw-bold">Logout</a>
+                        <a href="{{ route('auth.logout') }}" class="btn btn-outline-danger fw-bold">Logout</a>
                     </div>            
                 @endif
             </div>
