@@ -1,5 +1,5 @@
 <header>
-    <nav class="navbar navbar-expand-sm">
+    <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #281f49;">
         <div class="container">
             <div class="collapse navbar-collapse">
                 <a href="{{ route('admin.index') }}" class="navbar-brand">Laravel Web Admin</a>
@@ -14,7 +14,7 @@
                     </li>
                 </ul>
                 <div class="form-inline my-2 my-lg-0">
-                    <a href="{{ route('auth.logout') }}" class="btn btn-outline-success fw-bold">Logout</a>
+                    <a href="{{ route('auth.logout') }}" class="btn btn-outline-danger fw-bold">Logout</a>
                 </div>
             </div>    
         </div>        
@@ -24,10 +24,10 @@
             <div class="collapse navbar-collapse justify-content-center">
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item mx-3">
-                        <a href="{{ route('admin.index')}}" class="nav-link text-uppercase">Home</a>
+                        <a href="{{ route('admin.index')}}" class="nav-link text-uppercase {{ Request::routeIs('admin.index') ? 'active' : '' }}">Home</a>
                     </li>
                     <li class="nav-item mx-3">
-                        <a href="#" class="nav-link text-uppercase">Experiências</a>
+                        <a href="{{ route('admin.experiences.index') }}" class="nav-link text-uppercase">Experiências</a>
                     </li>
                     <li class="nav-item dropdown mx-3">
                         <a data-bs-toggle="dropdown" class="nav-link dropdown-toggle text-uppercase" href="#" id="navbarDropdownEscolarity" role="button" aria-expanded="false">
@@ -35,12 +35,12 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownEscolarity">
                             <li>
-                                <a href="#" class="dropdown-item">
+                                <a href="{{ route('admin.scholarity.index') }}" class="dropdown-item">
                                     Listagem
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="dropdown-item">
+                                <a href="{{ route('admin.scholarity.types.index') }}" class="dropdown-item">
                                     Tipos
                                 </a>
                             </li>
@@ -52,12 +52,12 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownLanguage">
                             <li>
-                                <a href="#" class="dropdown-item">
+                                <a href="{{ route('admin.languages.index') }}" class="dropdown-item">
                                     Listagem
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="dropdown-item">
+                                <a href="{{ route('admin.languages.types.index') }}" class="dropdown-item">
                                     Tipos
                                 </a>
                             </li>
@@ -67,4 +67,5 @@
             </div>
         </div>
     </nav>
+    @include('layout.include.breadcrumble')
 </header>

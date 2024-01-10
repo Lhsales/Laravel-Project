@@ -10,4 +10,12 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    function Experiences()
+    {
+        return view('experiences');
+    }
+    function Knowledges()
+    {
+        return view('knowledges');
+    }
 }
