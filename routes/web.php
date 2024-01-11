@@ -30,11 +30,14 @@ Route::controller(Controllers\AdminController::class)->middleware(['auth'])->gro
     Route::get('/admin', 'Index')->name('admin.index');
 });
 
+Route::controller(Controllers\LanguageController::class)->middleware(['auth'])->group(function(){
+    Route::get('/admin/languages', 'Index')->name('admin.languages.index');
+    Route::get('/admin/languages/types', 'Types')->name('admin.languages.types.index');
+    Route::get('/admin/languages/types/edit/{id}', 'Edit')->name('admin.languages.types.edit');
+});
+
 Route::view('/admin/experiences', 'experiences.index')->name('admin.experiences.index');
 
 Route::view('/admin/scholarity', 'scholarity.index')->name('admin.scholarity.index');
 Route::view('/admin/scholarity/types', 'scholarity.types.index')->name('admin.scholarity.types.index');
 Route::view('/admin/scholarity/types/2', 'scholarity.types.index')->name('admin.scholarity.types.index');
-
-Route::view('/admin/languages', 'languages.index')->name('admin.languages.index');
-Route::view('/admin/languages/types', 'languages.types.index')->name('admin.languages.types.index');
