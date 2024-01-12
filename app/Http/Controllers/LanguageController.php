@@ -11,7 +11,7 @@ class LanguageController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('ensure.exist.languagetype')->only('EditType', 'UpdateType');
+        $this->middleware('ensure.exist.languagetype')->only('EditType', 'UpdateType', 'DeleteType');
     }
 
     public function Index()
@@ -59,6 +59,15 @@ class LanguageController extends Controller
         
         return Redirect::route('admin.languages.types.index')
                        ->with('message', 'Tipo de linguagem atualizado com sucesso!')
+                       ->with('alert-class', 'success');
+    }
+
+    public function DeleteType($id)
+    {
+        LanguageType::find($id)->delete();
+
+        return Redirect::route('admin.languages.types.index')
+                       ->with('message', 'Tipo de linguagem removido com sucesso!')
                        ->with('alert-class', 'success');
     }
 }

@@ -27,11 +27,11 @@
                     </thead>
                     <tbody>
                         @foreach($list as $item)
-                            <tr  style="cursor:pointer;" onclick="window.location='{{ route('admin.languages.types.edit', $item->id) }}'">
-                                <td class="align-middle px-4">{{ $item->description }}</td>
+                            <tr>
+                                <td class="align-middle px-4" style="cursor:pointer;" onclick="window.location='{{ route('admin.languages.types.edit', $item->id) }}'">{{ $item->description }}</td>
                                 <td class="text-center">
-                                    <a href="#" class="icon fs-4"><ion-icon name="create-outline"></ion-icon></a>
-                                    <a href="#" class="icon fs-4 text-danger"><ion-icon name="trash-outline"></ion-icon></a>
+                                    <a href="{{ route('admin.languages.types.edit', $item->id) }}" class="icon fs-4"><ion-icon name="create-outline"></ion-icon></a>
+                                    <a href="#" data-href="{{ route('admin.languages.types.delete', $item->id)}}" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="icon fs-4 text-danger"><ion-icon name="trash-outline"></ion-icon></a>
                                 </td>
                             </tr>
                         @endforeach
@@ -41,5 +41,7 @@
         </div>        
     </div>
 </section>
+
+@include('layout.include.modal.delete', ['text'=>'Deseja realmente remover esse tipo de linguagem?']);
 
 @endsection
