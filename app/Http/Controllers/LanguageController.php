@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Language;
 use App\Models\LanguageType;
+use Redirect;
 
 class LanguageController extends Controller
 {
@@ -33,7 +34,9 @@ class LanguageController extends Controller
 
         LanguageType::create($data);
 
-        return redirect()->route('admin.languages.index');
+        return Redirect::route('admin.languages.types.index')
+                       ->with('message', 'Tipo de linguagem criado com sucesso!')
+                       ->with('alert-class', 'success');
     }
 
     function EditType()
