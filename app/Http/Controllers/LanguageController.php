@@ -9,26 +9,31 @@ use Redirect;
 
 class LanguageController extends Controller
 {
-    function Index()
+    public function __construct()
+    {
+        $this->middleware('ensure.exist.languagetype')->only('EditType', 'UpdateType');
+    }
+
+    public function Index()
     {
         $languages = Language::all();
 
         return view('languages.index', compact('languages'));
     }
 
-    function Types()
+    public function Types()
     {
         $list = LanguageType::all();
 
         return view('languages.types.index', compact('list'));
     }
 
-    function CreateType()
+    public function CreateType()
     {
         return view('languages.types.create');
     }
 
-    function SaveType(Request $req)
+    public function SaveType(Request $req)
     {
         $data = $req->all();
 
@@ -39,8 +44,21 @@ class LanguageController extends Controller
                        ->with('alert-class', 'success');
     }
 
-    function EditType()
+    public function EditType($id)
     {
+        $item = LanguageType::find($id);
+
+        return view('languages.types.edit', compact(['item', 'id']));
+    }
+
+    public function UpdateType(Request $req, $id)
+    {
+        $data = $req->all();
+
+        LanguageType::find($id)->update($data);
         
+        return Redirect::route('admin.languages.types.index')
+                       ->with('message', 'Tipo de linguagem atualizado com sucesso!')
+                       ->with('alert-class', 'success');
     }
 }

@@ -36,6 +36,7 @@ Route::controller(Controllers\LanguageController::class)->middleware(['auth'])->
     Route::get('/admin/languages/types/create', 'CreateType')->name('admin.languages.types.create');
     Route::post('/admin/languages/types/save', 'SaveType')->name('admin.languages.types.save');
     Route::get('/admin/languages/types/edit/{id}', 'EditType')->name('admin.languages.types.edit');
+    Route::post('/admin/languages/types/update/{id}', 'UpdateType')->name('admin.languages.types.update');
 });
 
 Route::view('/admin/experiences', 'experiences.index')->name('admin.experiences.index');
