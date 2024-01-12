@@ -6,7 +6,7 @@
 
 <section class="page-section">
     <div class="container">
-        <div class="">
+        <div class="table-responsive" >
             <div class="table-wrapper">
                 <div class="table-title text-bg-dark bg-dark">
                     <div class="row p-3">
@@ -14,7 +14,7 @@
                             <h3>Tipos de <b>Linguagens</b></h3>
                         </div>
                         <div class="col-2 text-center">
-                            <a href="#" class="btn btn-success icon">Adicionar novo tipo</a>
+                            <a href="{{ route('admin.languages.types.create')}}" class="btn btn-success icon">Adicionar tipo</a>
                         </div>
                     </div>                    
                 </div>

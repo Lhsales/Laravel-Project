@@ -22,7 +22,21 @@ class LanguageController extends Controller
         return view('languages.types.index', compact('list'));
     }
 
-    function Edit()
+    function CreateType()
+    {
+        return view('languages.types.create');
+    }
+
+    function SaveType(Request $req)
+    {
+        $data = $req->all();
+
+        LanguageType::create($data);
+
+        return redirect()->route('admin.languages.index');
+    }
+
+    function EditType()
     {
         
     }
