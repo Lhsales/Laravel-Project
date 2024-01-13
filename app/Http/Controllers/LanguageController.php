@@ -23,7 +23,7 @@ class LanguageController extends Controller
 
     public function Types()
     {
-        $list = LanguageType::all();
+        $list = LanguageType::all()->sortBy('description', false);
 
         return view('languages.types.index', compact('list'));
     }
