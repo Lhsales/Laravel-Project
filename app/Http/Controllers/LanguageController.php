@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Language;
 use App\Models\LanguageType;
+use App\Enum\LanguageLevelEnum;
 use Redirect;
 
 class LanguageController extends Controller
@@ -23,13 +24,14 @@ class LanguageController extends Controller
     public function Create()
     {
         $languageTypes = LanguageType::all()->sortBy('description', false);
+        $languageLevels = LanguageLevelEnum::getAll();
 
-        return view('languages.create', compact('languageTypes'));
+        return view('languages.create', compact(['languageTypes', 'languageLevels']));
     }
     public function Save(Request $req)
     {
         $data = $req->all();
-        
+
         Language::create($data);
 
         return Redirect::route('admin.languages.index')

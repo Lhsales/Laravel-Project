@@ -21,11 +21,9 @@
     <div class="col-2"></div>
     <div class="col-8 my-2">
         <select id="select-range" style="width: 28px;" name="level">
-            <option value="0">Não conheço</option>
-            <option value="1">Precário</option>
-            <option value="2" selected>Mediano</option>
-            <option value="3">Bom</option>
-            <option value="4">Ótimo</option>
+            @foreach ($languageLevels as $level)
+                <option value="{{ $loop->index }}">{{ $level }}</option>
+            @endforeach
         </select>
     </div>
     <div class="col-2"></div>
