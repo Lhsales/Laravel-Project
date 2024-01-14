@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('languages', function (Blueprint $table) {
             $table->id();
+            $table->string('description');
             $table->foreignId('language_type_id')->constrained();
             $table->integer('level');
             $table->timestamps();
