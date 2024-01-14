@@ -16,7 +16,7 @@
                         <div class="col-2 text-center">
                             <a href="{{ route('admin.languages.create')}}" class="btn btn-success icon">Adicionar</a>
                         </div>
-                    </div>                    
+                    </div>
                 </div>
                 <table class="table table-sm table-bordered table-hover">
                     <thead class="table-secondary" style="background-color:#222222">
@@ -31,8 +31,8 @@
                         @foreach($list as $item)
                             <tr class="align-middle">
                                 <td class="px-4" style="cursor:pointer;" onclick="window.location='{{ route('admin.languages.edit', $item->id) }}'">{{ $item->description }}</td>
-                                <td class="px-2">{{ $item->type->description }}</td>
-                                <td class="px-2">{{ $item->getLevel() }}</td>
+                                <td class="px-2" style="cursor:pointer;" onclick="window.location='{{ route('admin.languages.edit', $item->id) }}'">{{ $item->type->description }}</td>
+                                <td class="px-2" style="cursor:pointer;" onclick="window.location='{{ route('admin.languages.edit', $item->id) }}'">{{ $item->getLevel() }}</td>
                                 <td class="text-center">
                                     <a href="{{ route('admin.languages.edit', $item->id) }}" class="icon fs-4"><ion-icon name="create-outline"></ion-icon></a>
                                     <a href="#" data-href="{{ route('admin.languages.delete', $item->id)}}" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="icon fs-4 text-danger"><ion-icon name="trash-outline"></ion-icon></a>
@@ -42,7 +42,7 @@
                     </tbody>
                 </table>
             </div>
-        </div>        
+        </div>
     </div>
 </section>
 

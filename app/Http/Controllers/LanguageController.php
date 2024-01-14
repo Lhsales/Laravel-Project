@@ -38,6 +38,24 @@ class LanguageController extends Controller
                        ->with('message', 'Linguagem salva com sucesso!')
                        ->with('alert-class', 'success');
     }
+    public function Edit($id)
+    {
+        $item = Language::find($id);
+        $languageTypes = LanguageType::all()->sortBy('description', false);
+        $languageLevels = LanguageLevelEnum::getAll();
+        
+        return view('languages.edit', compact(['item', 'languageTypes', 'languageLevels']));
+    }
+    public function Update($id, Request $req)
+    {
+        $data = $req->all();
+
+        Language::find($id)->update($data);
+
+        return Redirect::route('admin.languages.index')
+                       ->with('message', 'Linguagem atualizada com sucesso!')
+                       ->with('alert-class', 'success');
+    }
 
     // LanguageType functions
     public function Types()
