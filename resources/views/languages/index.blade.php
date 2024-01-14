@@ -46,4 +46,6 @@
     </div>
 </section>
 
+@include('layout.include.modal.delete', ['text'=>'Deseja realmente remover essa linguagem?']);
+
 @endsection

@@ -57,6 +57,14 @@ class LanguageController extends Controller
                        ->with('message', 'Linguagem atualizada com sucesso!')
                        ->with('alert-class', 'success');
     }
+    public function Delete($id)
+    {
+        Language::find($id)->delete();
+
+        return Redirect::route('admin.languages.index')
+                       ->with('message', 'Linguagem removido com sucesso!')
+                       ->with('alert-class', 'success');
+    }
 
     // LanguageType functions
     public function Types()
