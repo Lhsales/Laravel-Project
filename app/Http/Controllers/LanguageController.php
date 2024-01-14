@@ -13,6 +13,7 @@ class LanguageController extends Controller
     public function __construct()
     {
         $this->middleware('ensure.exist.languagetype')->only('EditType', 'UpdateType', 'DeleteType');
+        $this->middleware('ensure.exist.language')->only('Edit', 'Update', 'Delete');
     }
 
     public function Index()
