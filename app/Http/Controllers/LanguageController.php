@@ -31,6 +31,12 @@ class LanguageController extends Controller
     }
     public function Save(Request $req)
     {
+        $validation = $req->validate([
+            'description' => 'required',
+            'language_type_id' => 'required|not_in:0',
+            'level' => 'required'
+        ]);
+
         $data = $req->all();
 
         Language::create($data);
@@ -49,6 +55,12 @@ class LanguageController extends Controller
     }
     public function Update($id, Request $req)
     {
+        $validation = $req->validate([
+            'description' => 'required',
+            'language_type_id' => 'required|not_in:0',
+            'level' => 'required'
+        ]);
+        
         $data = $req->all();
 
         Language::find($id)->update($data);
@@ -79,6 +91,10 @@ class LanguageController extends Controller
     }
     public function SaveType(Request $req)
     {
+        $validation = $req->validate([
+            'description' => 'required'
+        ]);
+
         $data = $req->all();
 
         LanguageType::create($data);
@@ -95,6 +111,10 @@ class LanguageController extends Controller
     }
     public function UpdateType(Request $req, $id)
     {
+        $validation = $req->validate([
+            'description' => 'required'
+        ]);
+
         $data = $req->all();
 
         LanguageType::find($id)->update($data);

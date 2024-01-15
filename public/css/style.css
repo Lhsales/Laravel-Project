@@ -83,6 +83,9 @@ body {
     color: rgb(255, 255, 255);
     background-color: rgba(255, 255, 255, 0.082);
 }
+.toast {
+    --bs-toast-spacing: 0.5rem;
+}
 
 @media (max-width: 450px) {
     .h-custom {

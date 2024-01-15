@@ -7,9 +7,12 @@
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 <script>
 
-    @if (Session::has('message'))
-        const toast = new bootstrap.Toast(document.querySelector('.toast'));
-        toast.show();
+    @if (Session::has('message') || (isset($errors) && $errors->any()))
+        var toastList = document.querySelectorAll('.toast');
+        toastList.forEach( function(toast, index, list) {
+            var bsToast = new bootstrap.Toast(toast);
+            bsToast.show();
+        });
     @endif
     
 
