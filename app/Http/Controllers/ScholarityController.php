@@ -64,4 +64,12 @@ class ScholarityController extends Controller
                        ->with('message', 'Tipo de escolaridade atualizado com sucesso!')
                        ->with('alert-class', 'success');
     }
+    public function DeleteType($id)
+    {
+        ScholarityType::find($id)->delete();
+
+        return Redirect::route('admin.scholarity.types.index')
+                       ->with('message', 'Tipo de escolaridade removido com sucesso!')
+                       ->with('alert-class', 'success');
+    }
 }
