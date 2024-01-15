@@ -44,4 +44,24 @@ class ScholarityController extends Controller
                        ->with('message', 'Tipo de escolaridade criado com sucesso!')
                        ->with('alert-class', 'success');
     }
+    public function EditType($id)
+    {
+        $item = ScholarityType::find($id);
+
+        return view('scholarity.types.edit', compact(['item', 'id']));
+    }
+    public function UpdateType(Request $req, $id)
+    {
+        $validation = $req->validate([
+            'description' => 'required'
+        ]);
+
+        $data = $req->all();
+
+        ScholarityType::find($id)->update($data);
+
+        return Redirect::route('admin.scholarity.types.index')
+                       ->with('message', 'Tipo de escolaridade atualizado com sucesso!')
+                       ->with('alert-class', 'success');
+    }
 }
