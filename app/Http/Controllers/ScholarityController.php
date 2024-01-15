@@ -11,7 +11,7 @@ class ScholarityController extends Controller
 {
     public function __construct()
     {
-
+        $this->middleware('ensure.exist.scholaritytype')->only('EditType', 'UpdateType', 'DeleteType');
     }
 
     public function Index()

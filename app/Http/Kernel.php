@@ -66,5 +66,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'ensure.exist.languagetype' => \App\Http\Middleware\EnsureExist\EnsureLanguageTypeExist::class,
         'ensure.exist.language' => \App\Http\Middleware\EnsureExist\EnsureLanguageExist::class,
+        'ensure.exist.scholaritytype' => \App\Http\Middleware\EnsureExist\EnsureScholarityTypeExist::class,
     ];
 }
