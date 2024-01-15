@@ -5,9 +5,9 @@
     <div class="containter-fluid">
         <div class="footer-basic">
             <div class="social">
-                <a href="#"><i class="icon ion-social-instagram"></i></a>
-                <a href="#"><i class="icon ion-social-twitter"></i></a>
-                <a href="#"><i class="icon ion-social-facebook"></i></a>
+                <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+                <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+                <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
             </div>
             <ul class="list-inline">
                 <li class="list-inline-item"><a href="{{ route('home') }}">Home</a></li>

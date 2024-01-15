@@ -30,11 +30,24 @@ Route::controller(Controllers\AdminController::class)->middleware(['auth'])->gro
     Route::get('/admin', 'Index')->name('admin.index');
 });
 
+Route::controller(Controllers\LanguageController::class)->middleware(['auth'])->group(function(){
+    Route::get('/admin/languages', 'Index')->name('admin.languages.index');
+    Route::get('/admin/languages/create', 'Create')->name('admin.languages.create');
+    Route::post('/admin/languages/save', 'Save')->name('admin.languages.save');
+    Route::get('/admin/languages/edit/{id}', 'Edit')->name('admin.languages.edit');
+    Route::post('/admin/languages/update/{id}', 'Update')->name('admin.languages.update');
+    Route::get('/admin/languages/delete/{id}', 'Delete')->name('admin.languages.delete');
+
+    Route::get('/admin/languages/types', 'Types')->name('admin.languages.types.index');
+    Route::get('/admin/languages/types/create', 'CreateType')->name('admin.languages.types.create');
+    Route::post('/admin/languages/types/save', 'SaveType')->name('admin.languages.types.save');
+    Route::get('/admin/languages/types/edit/{id}', 'EditType')->name('admin.languages.types.edit');
+    Route::post('/admin/languages/types/update/{id}', 'UpdateType')->name('admin.languages.types.update');
+    Route::get('/admin/languages/types/delete/{id}', 'DeleteType')->name('admin.languages.types.delete');
+});
+
 Route::view('/admin/experiences', 'experiences.index')->name('admin.experiences.index');
 
 Route::view('/admin/scholarity', 'scholarity.index')->name('admin.scholarity.index');
 Route::view('/admin/scholarity/types', 'scholarity.types.index')->name('admin.scholarity.types.index');
 Route::view('/admin/scholarity/types/2', 'scholarity.types.index')->name('admin.scholarity.types.index');
-
-Route::view('/admin/languages', 'languages.index')->name('admin.languages.index');
-Route::view('/admin/languages/types', 'languages.types.index')->name('admin.languages.types.index');
