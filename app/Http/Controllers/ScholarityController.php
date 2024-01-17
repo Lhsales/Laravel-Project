@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Scholarity;
 use App\Models\ScholarityType;
 use Redirect;
+use Carbon\Carbon;
 
 class ScholarityController extends Controller
 {
@@ -25,6 +26,19 @@ class ScholarityController extends Controller
         $scholarityTypes = ScholarityType::all();
 
         return view('scholarity.create', compact('scholarityTypes'));
+    }
+    public function Save(Request $req)
+    {
+        $data = $req->all();
+
+        $data['started_at'] = Carbon::createFromFormat('d-m-Y', '01-'. $data['started_at'])->format('Y-m-d');
+        $data['ended_at'] = isset($data['ended_at']) ? Carbon::createFromFormat('d-m-Y', '01-'. $data['ended_at'])->format('Y-m-d') : null;
+
+        Scholarity::create($data);
+
+        return Redirect::route('admin.scholarity.index')
+                       ->with('message', 'Escolaridade criada com sucesso!')
+                       ->with('alert-class', 'success');
     }
 
     public function Types()

@@ -16,5 +16,6 @@
 
     @include('layout.admin.include.footer')
     @include('layout.include.scripts')
+    @yield('custom-script')
 </body>
 </html>
