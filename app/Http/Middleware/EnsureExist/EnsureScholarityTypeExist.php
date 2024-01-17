@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-use App\Models\LanguageType;
+use App\Models\ScholarityType;
 
 use Redirect;
 
@@ -19,7 +19,7 @@ class EnsureScholarityTypeExist
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (LanguageType::find($request->route('id')))
+        if (ScholarityType::find($request->route('id')))
             return $next($request);
         else
         {

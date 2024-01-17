@@ -16,8 +16,15 @@ class ScholarityController extends Controller
 
     public function Index()
     {
+        $list = Scholarity::all();
 
-        return view('scholarity.index');
+        return view('scholarity.index', compact('list'));
+    }
+    public function Create()
+    {
+        $scholarityTypes = ScholarityType::all();
+
+        return view('scholarity.create', compact('scholarityTypes'));
     }
 
     public function Types()

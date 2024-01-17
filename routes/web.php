@@ -32,6 +32,11 @@ Route::controller(Controllers\AdminController::class)->middleware(['auth'])->gro
 
 Route::controller(Controllers\ScholarityController::class)->middleware(['auth'])->group(function(){
     Route::get('/admin/scholarity', 'Index')->name('admin.scholarity.index');
+    Route::get('/admin/scholarity/create', 'Create')->name('admin.scholarity.create');
+    Route::get('/admin/scholarity/edit/{id}', 'Edit')->name('admin.scholarity.edit');
+    Route::get('/admin/scholarity/delete/{id}', 'Delete')->name('admin.scholarity.delete');
+    Route::post('/admin/scholarity/save', 'Save')->name('admin.scholarity.save');
+    Route::post('/admin/scholarity/update', 'Update')->name('admin.scholarity.update');
 
     Route::get('/admin/scholarity/types', 'Types')->name('admin.scholarity.types.index');
     Route::get('/admin/scholarity/types/create', 'CreateType')->name('admin.scholarity.types.create');
