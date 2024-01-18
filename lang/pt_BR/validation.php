@@ -214,7 +214,11 @@ return [
         'category' => 'categoria',
         'blood_type' => 'tipo sanguíneo',
         'birth_date' => 'data de nascimento',
-        'language_type_id' => 'tipo'
+        'language_type_id' => 'tipo',
+        'scholarity_type_id' => 'tipo',
+        'institution' => 'instituição',
+        'course' => 'curso',
+        'started_at' => 'inicio',
     ],
 
 ];
