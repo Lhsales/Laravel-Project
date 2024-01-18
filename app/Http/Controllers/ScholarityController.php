@@ -40,6 +40,26 @@ class ScholarityController extends Controller
                        ->with('message', 'Escolaridade criada com sucesso!')
                        ->with('alert-class', 'success');
     }
+    public function Edit($id)
+    {
+        $item = Scholarity::find($id);
+        $scholarityTypes = ScholarityType::all();
+
+        return view('scholarity.edit', compact(['id', 'item', 'scholarityTypes']));
+    }
+    public function Update(Request $req, $id)
+    {
+        $data = $req->all();
+
+        $data['started_at'] = Carbon::createFromFormat('d-m-Y', '01-'. $data['started_at'])->format('Y-m-d');
+        $data['ended_at'] = isset($data['ended_at']) ? Carbon::createFromFormat('d-m-Y', '01-'. $data['ended_at'])->format('Y-m-d') : null;
+
+        Scholarity::find($id)->update($data);
+
+        return Redirect::route('admin.scholarity.index')
+                       ->with('message', 'Escolaridade atualizada com sucesso!')
+                       ->with('alert-class', 'success');
+    }
 
     public function Types()
     {
