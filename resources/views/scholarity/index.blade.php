@@ -30,7 +30,7 @@
                     <tbody>
                         @foreach($list as $item)
                             <tr class="align-middle">
-                                <td class="px-4" style="cursor:pointer;" onclick="window.location='{{ route('admin.scholarity.edit', $item->id) }}'">{{ $item->scholarity_type_id }}</td>
+                                <td class="px-4" style="cursor:pointer;" onclick="window.location='{{ route('admin.scholarity.edit', $item->id) }}'">{{ $item->type->description }}</td>
                                 <td class="px-4" style="cursor:pointer;" onclick="window.location='{{ route('admin.scholarity.edit', $item->id) }}'">{{ $item->course }}</td>
                                 <td class="px-4" style="cursor:pointer;" onclick="window.location='{{ route('admin.scholarity.edit', $item->id) }}'">{{ $item->institution }}</td>
                                 <td class="text-center">

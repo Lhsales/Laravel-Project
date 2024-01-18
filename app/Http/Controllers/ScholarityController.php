@@ -13,6 +13,7 @@ class ScholarityController extends Controller
     public function __construct()
     {
         $this->middleware('ensure.exist.scholaritytype')->only('EditType', 'UpdateType', 'DeleteType');
+        $this->middleware('ensure.exist.scholarity')->only('Edit', 'Update', 'Delete');
     }
 
     public function Index()
@@ -29,6 +30,14 @@ class ScholarityController extends Controller
     }
     public function Save(Request $req)
     {
+        $req->validate([
+            'scholarity_type_id' => 'required|not_in:0',
+            'institution' => 'required',
+            'course' => 'required',
+            'started_at' => 'required',
+            'ended_at' => 'nullable'
+        ]);
+
         $data = $req->all();
 
         $data['started_at'] = Carbon::createFromFormat('d-m-Y', '01-'. $data['started_at'])->format('Y-m-d');
@@ -49,6 +58,14 @@ class ScholarityController extends Controller
     }
     public function Update(Request $req, $id)
     {
+        $req->validate([
+            'scholarity_type_id' => 'required|not_in:0',
+            'institution' => 'required',
+            'course' => 'required',
+            'started_at' => 'required',
+            'ended_at' => 'nullable'
+        ]);
+        
         $data = $req->all();
 
         $data['started_at'] = Carbon::createFromFormat('d-m-Y', '01-'. $data['started_at'])->format('Y-m-d');
