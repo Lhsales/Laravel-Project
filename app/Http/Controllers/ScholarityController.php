@@ -77,6 +77,14 @@ class ScholarityController extends Controller
                        ->with('message', 'Escolaridade atualizada com sucesso!')
                        ->with('alert-class', 'success');
     }
+    public function Delete($id)
+    {
+        Scholarity::find($id)->delete();
+
+        return Redirect::route('admin.scholarity.index')
+                       ->with('message', 'Escolaridade removida com sucesso!')
+                       ->with('alert-class', 'success');
+    }
 
     public function Types()
     {
