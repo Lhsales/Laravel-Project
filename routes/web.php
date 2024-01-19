@@ -62,4 +62,11 @@ Route::controller(Controllers\LanguageController::class)->middleware(['auth'])->
     Route::post('/admin/languages/types/update/{id}', 'UpdateType')->name('admin.languages.types.update');
 });
 
-Route::view('/admin/experiences', 'experiences.index')->name('admin.experiences.index');
+Route::controller(Controllers\ExperienceController::class)->middleware(['auth'])->group(function(){
+    Route::get('/admin/experiences', 'Index')->name('admin.experiences.index');
+    Route::get('/admin/experiences/create', 'Create')->name('admin.experiences.create');
+    Route::get('/admin/experiences/edit/{id}', 'Edit')->name('admin.experiences.edit');
+    Route::get('/admin/experiences/delete/{id}', 'Delete')->name('admin.experiences.delete');
+    Route::post('/admin/experiences/save', 'Save')->name('admin.experiences.save');
+    Route::post('/admin/experiences/update/{id}', 'Update')->name('admin.experiences.update');
+});
