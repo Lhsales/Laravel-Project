@@ -33,8 +33,8 @@
                             <tr class="align-middle">
                                 <td class="px-4" style="cursor:pointer;" onclick="window.location='{{ route('admin.experiences.edit', $item->id) }}'">{{ $item->ocupation }}</td>
                                 <td class="px-4" style="cursor:pointer;" onclick="window.location='{{ route('admin.experiences.edit', $item->id) }}'">{{ $item->company }}</td>
-                                <td class="px-4" style="cursor:pointer;" onclick="window.location='{{ route('admin.experiences.edit', $item->id) }}'">{{ $item->started_at }}</td>
-                                <td class="px-4" style="cursor:pointer;" onclick="window.location='{{ route('admin.experiences.edit', $item->id) }}'">{{ $item->ended_at }}</td>
+                                <td class="px-4" style="cursor:pointer;" onclick="window.location='{{ route('admin.experiences.edit', $item->id) }}'">{{ Carbon\Carbon::parse($item->started_at)->format('m/Y') }}</td>
+                                <td class="px-4" style="cursor:pointer;" onclick="window.location='{{ route('admin.experiences.edit', $item->id) }}'">{{ Carbon\Carbon::parse($item->ended_at)->format('m/Y') }}</td>
                                 <td class="text-center">
                                     <a href="{{ route('admin.experiences.edit', $item->id) }}" class="icon fs-4"><ion-icon name="create-outline"></ion-icon></a>
                                     <a href="#" data-href="{{ route('admin.experiences.delete', $item->id)}}" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="icon fs-4 text-danger"><ion-icon name="trash-outline"></ion-icon></a>
