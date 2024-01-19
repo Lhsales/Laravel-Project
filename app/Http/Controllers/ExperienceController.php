@@ -70,4 +70,12 @@ class ExperienceController extends Controller
                        ->with('message', 'Experiência atualizada com sucesso!')
                        ->with('alert-class', 'success');
     }
+    public function Delete($id)
+    {
+        Experience::find($id)->delete();
+
+        return Redirect::route('admin.experiences.index')
+                       ->with('message', 'Experiência removida com sucesso!')
+                       ->with('alert-class', 'success');
+    }
 }
