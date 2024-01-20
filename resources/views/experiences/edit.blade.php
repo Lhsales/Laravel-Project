@@ -51,7 +51,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($works as $work)
+                            @foreach($item->works as $work)
                                 <tr class="align-middle">
                                     <td class="px-4" style="cursor:pointer;" >{{$work->name}}</td>
                                     <td class="text-center">

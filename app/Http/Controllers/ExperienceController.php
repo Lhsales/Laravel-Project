@@ -45,9 +45,8 @@ class ExperienceController extends Controller
     public function Edit($id)
     {
         $item = Experience::find($id);
-        $works = Work::where(['experience_id' => $id])->get();
 
-        return view('experiences.edit', compact(['item', 'id', 'works']));
+        return view('experiences.edit', compact(['item', 'id']));
     }
     public function Update(Request $req, $id)
     {
