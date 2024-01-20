@@ -38,14 +38,14 @@ class ExperienceController extends Controller
 
         Experience::create($data);
 
-        return Redirect::route('admin.experiences.index')
+        return Redirect::route('admin.experiences.edit', $id)
                        ->with('message', 'Experiência criada com sucesso!')
                        ->with('alert-class', 'success');
     }
     public function Edit($id)
     {
         $item = Experience::find($id);
-        $works = Work::where(['experience_id' => $id]);
+        $works = Work::where(['experience_id' => $id])->get();
 
         return view('experiences.edit', compact(['item', 'id', 'works']));
     }
@@ -66,7 +66,7 @@ class ExperienceController extends Controller
 
         Experience::find($id)->update($data);
 
-        return Redirect::route('admin.experiences.index')
+        return Redirect::route('admin.experiences.edit', $id)
                        ->with('message', 'Experiência atualizada com sucesso!')
                        ->with('alert-class', 'success');
     }
@@ -76,6 +76,27 @@ class ExperienceController extends Controller
 
         return Redirect::route('admin.experiences.index')
                        ->with('message', 'Experiência removida com sucesso!')
+                       ->with('alert-class', 'success');
+    }
+
+    public function CreateWork($experience_id)
+    {
+        return view('experiences.works.create', ['experience_id' => $experience_id]);
+    }
+    public function SaveWork(Request $req, $experience_id)
+    {
+        $req->validate([
+            'name' => 'required',
+            'description' => 'required'
+        ]);
+
+        $data = $req->all();
+        $data['experience_id'] = $experience_id;
+
+        Work::create($data);
+
+        return Redirect::route('admin.experiences.edit', ['id' => $experience_id])
+                       ->with('message', 'Trabalho criado com sucesso!')
                        ->with('alert-class', 'success');
     }
 }

@@ -39,7 +39,7 @@
                                 <h3><b>Trabalhos</b></h3>
                             </div>
                             <div class="col-2 text-center">
-                                <a href="#" class="btn btn-success icon">Adicionar</a>
+                                <a href="{{ route('admin.experiences.works.create', ['experience_id' => $item->id]) }}" class="btn btn-success icon">Adicionar</a>
                             </div>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                         <tbody>
                             @foreach($works as $work)
                                 <tr class="align-middle">
-                                    <td class="px-4" style="cursor:pointer;" onclick="window.location='#'"></td>
+                                    <td class="px-4" style="cursor:pointer;" >{{$work->name}}</td>
                                     <td class="text-center">
                                         <a href="#" class="icon fs-4"><ion-icon name="create-outline"></ion-icon></a>
                                         <a href="#" data-href="#" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="icon fs-4 text-danger"><ion-icon name="trash-outline"></ion-icon></a>
