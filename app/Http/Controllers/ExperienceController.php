@@ -126,5 +126,20 @@ class ExperienceController extends Controller
                        ->with('message', 'Trabalho atualizado com sucesso!')
                        ->with('alert-class', 'success');
     }
+    public function DeleteWork($experience_id, $work_id)
+    {
+        $work = Work::find($work_id);
+
+        if ($work->experience_id != $experience_id)
+            return Redirect::route('admin.experiences.index')
+                           ->with('message', 'Dados inválidos para trabalho, acesse o trabalho via os menus: Experience > Edit > Works')
+                           ->with('alert-class', 'warning');
+
+        $work->delete();
+
+        return Redirect::route('admin.experiences.edit', ['id' => $experience_id])
+                       ->with('message', 'Trabalho removido com sucesso!')
+                       ->with('alert-class', 'success');
+    }
 
 }

@@ -56,7 +56,7 @@
                                     <td class="px-4" style="cursor:pointer;" onclick="window.location='{{ route('admin.experiences.works.edit', ['experience_id' => $work->experience_id, 'work_id' => $work->id]) }}'">{{$work->name}}</td>
                                     <td class="text-center">
                                         <a href="{{ route('admin.experiences.works.edit', ['experience_id' => $work->experience_id, 'work_id' => $work->id]) }}" class="icon fs-4"><ion-icon name="create-outline"></ion-icon></a>
-                                        <a href="#" data-href="#" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="icon fs-4 text-danger"><ion-icon name="trash-outline"></ion-icon></a>
+                                        <a data-href="{{ route('admin.experiences.works.delete', ['experience_id' => $work->experience_id, 'work_id' => $work->id]) }}" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="icon fs-4 text-danger" style="cursor: pointer"><ion-icon name="trash-outline"></ion-icon></a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -67,6 +67,8 @@
         </div>
     </div>
 </section>
+
+@include('layout.include.modal.delete', ['text'=>'Deseja realmente remover esse trabalho?']);
 
 @endsection
 

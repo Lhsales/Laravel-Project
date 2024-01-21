@@ -72,6 +72,7 @@ Route::controller(Controllers\ExperienceController::class)->middleware(['auth'])
 
     Route::get('/admin/experiences/{experience_id}/works/create', 'CreateWork')->name('admin.experiences.works.create');
     Route::get('/admin/experiences/{experience_id}/works/edit/{work_id}', 'EditWork')->name('admin.experiences.works.edit');
+    Route::get('/admin/experiences/{experience_id}/works/delete/{work_id}', 'DeleteWork')->name('admin.experiences.works.delete');
     Route::post('/admin/experiences/{experience_id}/works/save', 'SaveWork')->name('admin.experiences.works.save');
     Route::post('/admin/experiences/{experience_id}/works/update/{work_id}', 'UpdateWork')->name('admin.experiences.works.update');
 });
