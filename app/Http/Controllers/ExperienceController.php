@@ -98,4 +98,33 @@ class ExperienceController extends Controller
                        ->with('message', 'Trabalho criado com sucesso!')
                        ->with('alert-class', 'success');
     }
+    public function EditWork($experience_id, $work_id)
+    {
+        $item = Work::find($work_id);
+
+        if ($item->experience_id != $experience_id)
+            return Redirect::route('admin.experiences.index')
+                           ->with('message', 'Dados inválidos para trabalho, acesse o trabalho via os menus: Experience > Edit > Works')
+                           ->with('alert-class', 'warning');
+
+        return view('experiences.works.edit', ['experience_id' => $experience_id, 'work_id' => $work_id, 'item' => $item]);
+    }
+    public function UpdateWork(Request $req, $experience_id, $work_id)
+    {
+        $req->validate([
+            'name' => 'required',
+            'description' => 'required'
+        ]);
+
+        $data = $req->all();
+        $data['experience_id'] = $experience_id;
+        $data['id'] = $work_id;
+        
+        Work::find($work_id)->update($data);
+
+        return Redirect::route('admin.experiences.edit', ['id' => $experience_id])
+                       ->with('message', 'Trabalho atualizado com sucesso!')
+                       ->with('alert-class', 'success');
+    }
+
 }
