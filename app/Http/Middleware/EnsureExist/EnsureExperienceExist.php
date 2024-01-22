@@ -18,13 +18,18 @@ class EnsureExperienceExist
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Experience::find($request->route('id')))
-            return $next($request);
-        else
+        if (is_numeric($request->route('id')))
         {
-            return Redirect::route('admin.experiences.index')
-                           ->with('message', 'Experiência não encontrada!')
-                           ->with('alert-class', 'warning');
+            if (Experience::find($request->route('id')))
+                return $next($request);
+            else
+            {
+                return Redirect::route('admin.experiences.index')
+                               ->with('message', 'Experiência não encontrada!')
+                               ->with('alert-class', 'warning');
+            }
         }
+        else 
+            return Redirect::route('admin.experiences.index');
     }
 }

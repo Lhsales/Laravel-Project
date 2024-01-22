@@ -19,13 +19,18 @@ class EnsureLanguageTypeExist
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (LanguageType::find($request->route('id')))
-            return $next($request);
-        else
+        if (is_numeric($request->route('id')))
         {
-            return Redirect::route('admin.languages.types.index')
-                           ->with('message', 'Tipo de Linguagem não encontrado!')
-                           ->with('alert-class', 'warning');
+            if (LanguageType::find($request->route('id')))
+                return $next($request);
+            else
+            {
+                return Redirect::route('admin.languages.types.index')
+                               ->with('message', 'Tipo de Linguagem não encontrado!')
+                               ->with('alert-class', 'warning');
+            }
         }
+        else 
+            Redirect::route('admin.languages.types.index');
     }
 }

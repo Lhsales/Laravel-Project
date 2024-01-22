@@ -19,13 +19,18 @@ class EnsureScholarityExist
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Scholarity::find($request->route('id')))
-            return $next($request);
-        else
+        if (is_numeric($request->route('id')))
         {
-            return Redirect::route('admin.scholarity.index')
-                           ->with('message', 'Escolaridade não encontrada!')
-                           ->with('alert-class', 'warning');
+            if (Scholarity::find($request->route('id')))
+                return $next($request);
+            else
+            {
+                return Redirect::route('admin.scholarity.index')
+                               ->with('message', 'Escolaridade não encontrada!')
+                               ->with('alert-class', 'warning');
+            }
         }
+        else 
+            Redirect::route('admin.scholarity.index');
     }
 }

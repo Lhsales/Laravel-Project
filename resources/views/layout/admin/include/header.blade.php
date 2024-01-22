@@ -27,10 +27,10 @@
                         <a href="{{ route('admin.index')}}" class="nav-link text-uppercase {{ Request::routeIs('admin.index') ? 'active' : '' }}">Home</a>
                     </li>
                     <li class="nav-item mx-3">
-                        <a href="{{ route('admin.experiences.index') }}" class="nav-link text-uppercase">Experiências</a>
+                        <a href="{{ route('admin.experiences.index') }}" class="nav-link text-uppercase {{ Request::routeIs('admin.experiences.*') ? 'active' : '' }}">Experiências</a>
                     </li>
                     <li class="nav-item dropdown mx-3">
-                        <a data-bs-toggle="dropdown" class="nav-link dropdown-toggle text-uppercase" href="#" id="navbarDropdownEscolarity" role="button" aria-expanded="false">
+                        <a data-bs-toggle="dropdown" class="nav-link dropdown-toggle text-uppercase {{ Request::routeIs('admin.scholarity.*') ? 'active' : '' }}" href="#" id="navbarDropdownEscolarity" role="button" aria-expanded="false">
                             Escolaridades
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownEscolarity">
@@ -47,7 +47,7 @@
                         </ul>
                     </li>
                     <li class="nav-item dropdown mx-3">
-                        <a data-bs-toggle="dropdown" href="#" class="nav-link dropdown-toggle text-uppercase" id="navbarDropdownLanguage">
+                        <a data-bs-toggle="dropdown" href="#" class="nav-link dropdown-toggle text-uppercase {{ Request::routeIs('admin.languages.*') ? 'active' : '' }}" id="navbarDropdownLanguage">
                             Linguagens
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownLanguage">

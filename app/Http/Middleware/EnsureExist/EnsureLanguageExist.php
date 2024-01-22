@@ -19,13 +19,18 @@ class EnsureLanguageExist
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Language::find($request->route('id')))
-            return $next($request);
-        else
+        if (is_numeric($request->route('id')))
         {
-            return Redirect::route('admin.languages.index')
-                           ->with('message', 'Linguagem não encontrada!')
-                           ->with('alert-class', 'warning');
+            if (Language::find($request->route('id')))
+                return $next($request);
+            else
+            {
+                return Redirect::route('admin.languages.index')
+                               ->with('message', 'Linguagem não encontrada!')
+                               ->with('alert-class', 'warning');
+            }
         }
+        else
+            return Redirect::route('admin.languages.index');        
     }
 }
