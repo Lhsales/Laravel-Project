@@ -62,4 +62,17 @@ Route::controller(Controllers\LanguageController::class)->middleware(['auth'])->
     Route::post('/admin/languages/types/update/{id}', 'UpdateType')->name('admin.languages.types.update');
 });
 
-Route::view('/admin/experiences', 'experiences.index')->name('admin.experiences.index');
+Route::controller(Controllers\ExperienceController::class)->middleware(['auth'])->group(function(){
+    Route::get('/admin/experiences', 'Index')->name('admin.experiences.index');
+    Route::get('/admin/experiences/create', 'Create')->name('admin.experiences.create');
+    Route::get('/admin/experiences/edit/{id}', 'Edit')->name('admin.experiences.edit');
+    Route::get('/admin/experiences/delete/{id}', 'Delete')->name('admin.experiences.delete');
+    Route::post('/admin/experiences/save', 'Save')->name('admin.experiences.save');
+    Route::post('/admin/experiences/update/{id}', 'Update')->name('admin.experiences.update');
+
+    Route::get('/admin/experiences/{experience_id}/works/create', 'CreateWork')->name('admin.experiences.works.create');
+    Route::get('/admin/experiences/{experience_id}/works/edit/{work_id}', 'EditWork')->name('admin.experiences.works.edit');
+    Route::get('/admin/experiences/{experience_id}/works/delete/{work_id}', 'DeleteWork')->name('admin.experiences.works.delete');
+    Route::post('/admin/experiences/{experience_id}/works/save', 'SaveWork')->name('admin.experiences.works.save');
+    Route::post('/admin/experiences/{experience_id}/works/update/{work_id}', 'UpdateWork')->name('admin.experiences.works.update');
+});
