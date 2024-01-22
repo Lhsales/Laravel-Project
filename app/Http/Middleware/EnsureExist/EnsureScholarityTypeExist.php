@@ -19,13 +19,18 @@ class EnsureScholarityTypeExist
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (ScholarityType::find($request->route('id')))
-            return $next($request);
-        else
+        if (is_numeric($request->route('id')))
         {
-            return Redirect::route('admin.scholarity.types.index')
-                           ->with('message', 'Tipo de Escolaridade não encontrado!')
-                           ->with('alert-class', 'warning');
+            if (ScholarityType::find($request->route('id')))
+                return $next($request);
+            else
+            {
+                return Redirect::route('admin.scholarity.types.index')
+                               ->with('message', 'Tipo de Escolaridade não encontrado!')
+                               ->with('alert-class', 'warning');
+            }
         }
+        else 
+            Redirect::route('admin.scholarity.types.index');
     }
 }
