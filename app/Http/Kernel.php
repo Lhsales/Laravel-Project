@@ -68,5 +68,7 @@ class Kernel extends HttpKernel
         'ensure.exist.language' => \App\Http\Middleware\EnsureExist\EnsureLanguageExist::class,
         'ensure.exist.scholaritytype' => \App\Http\Middleware\EnsureExist\EnsureScholarityTypeExist::class,
         'ensure.exist.scholarity' => \App\Http\Middleware\EnsureExist\EnsureScholarityExist::class,
+        'ensure.exist.experience' => \App\Http\Middleware\EnsureExist\EnsureExperienceExist::class,
+        'ensure.exist.work' => \App\Http\Middleware\EnsureExist\EnsureWorkExist::class,
     ];
 }

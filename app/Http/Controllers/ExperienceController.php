@@ -10,6 +10,11 @@ use Carbon\Carbon;
 
 class ExperienceController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('ensure.exist.experience')->only('Edit', 'Update', 'Delete');
+        $this->middleware('ensure.exist.work')->only('EditWork', 'UpdateWork', 'DeleteWork');
+    }
     
     public function Index()
     {
